@@ -1,0 +1,19 @@
+HOW TO PLAY PINBALL
+
+Controls:
+
+Press FIRE on joystick 1 to launch a ball.
+
+Press LEFT on joystick 1 to flip the left flipper.
+
+Press RIGHT on joystick 1 to flip the right flipper.
+
+Objective:
+
+Use the flippers to keep the ball in the air.
+
+Hit the bumpers to get points.
+
+Red bumpers give quadruple points.
+
+You have 4 balls, when they are gone it's game over.
