@@ -1,0 +1,19 @@
+HOW TO PLAY KNIGHTS ATTACK
+
+Controls:
+
+Use joystick 1 to move your knight.
+
+Press FIRE on joystick 1 to swing your sword.
+
+Hold FIRE for 2 seconds to start/restart a game.
+
+Objective:
+
+Kill enemy knights to get points.
+
+Avoid enemy knights when they are swinging their swords.
+
+Enemy knights will turn red right before they attack.
+
+Avoid arrows that fly across the screen.
