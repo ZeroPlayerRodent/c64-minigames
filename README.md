@@ -11,6 +11,8 @@ Minigames for the Commodore 64!
 
 These are small games programmed for the Commodore 64 using a [custom compiler](https://github.com/ZeroPlayerRodent/Duck-and-Cover-64/tree/main/compiler).
 
+Assemble the assembly code with [dasm](https://dasm-assembler.github.io/).
+
 ## How to Play
 
 First, load the game from disk or tape and type `SYS 32768` to begin.
