@@ -1,0 +1,15 @@
+HOW TO PLAY BOMBERS DODGE
+
+Controls:
+
+Use joystick 1 to move player 1's ship.
+
+Use joystick 2 to move player 2's ship.
+
+Press FIRE to start/restart a game.
+
+Objective:
+
+Collect piles of gold to get points.
+
+Avoid bombs to stay alive.
