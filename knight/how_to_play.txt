@@ -17,3 +17,9 @@ Avoid enemy knights when they are swinging their swords.
 Enemy knights will turn red right before they attack.
 
 Avoid arrows that fly across the screen.
+
+Hints:
+
+Hitting an enemy knight's shield will not kill them.
+
+An enemy knight hitting your shield will not kill you.
