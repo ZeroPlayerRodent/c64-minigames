@@ -1237,21 +1237,11 @@ NEWBALL
  lda #0
 
  sta $C018
-; THIS IS LEFTCOOL
-
- lda #0
-
- sta $C019
-; THIS IS RIGHTCOOL
-
- lda #0
-
- sta $C01A
 ; THIS IS BINGTIME
 
  lda #2
 
- sta $C01B
+ sta $C019
 ; THIS IS SPECIAL
 
 LoopNo35
@@ -1292,7 +1282,7 @@ GotoNo37
  lda #5
  sta $D02C
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #1
  sta $CFFD
@@ -1306,7 +1296,7 @@ BranchNo38
 
 GotoNo38
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #2
  sta $CFFD
@@ -1320,7 +1310,7 @@ BranchNo39
 
 GotoNo39
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #3
  sta $CFFD
@@ -1334,7 +1324,7 @@ BranchNo40
 
 GotoNo40
 
- lda $C01A
+ lda $C018
  sta $CFFE
  lda #0
  sta $CFFD
@@ -1343,18 +1333,18 @@ GotoNo40
  bcc BranchNo41
  jmp GotoNo41
 BranchNo41
- lda $C01A
+ lda $C018
 
  sec
  sbc #1
 
  sta $CFFF
 
- sta $C01A
+ sta $C018
 
 GotoNo41
 
- lda $C01A
+ lda $C018
  sta $CFFE
  lda #0
  sta $CFFD
@@ -1422,7 +1412,7 @@ BranchNo45
 
 GotoNo45
 
- lda $C018
+ lda $C012
  sta $CFFE
  lda #0
  sta $CFFD
@@ -1431,46 +1421,6 @@ GotoNo45
  bcc BranchNo46
  jmp GotoNo46
 BranchNo46
- lda $C018
-
- sec
- sbc #1
-
- sta $CFFF
-
- sta $C018
-
-GotoNo46
-
- lda $C019
- sta $CFFE
- lda #0
- sta $CFFD
- lda $CFFD
- cmp $CFFE
- bcc BranchNo47
- jmp GotoNo47
-BranchNo47
- lda $C019
-
- sec
- sbc #1
-
- sta $CFFF
-
- sta $C019
-
-GotoNo47
-
- lda $C012
- sta $CFFE
- lda #0
- sta $CFFD
- lda $CFFD
- cmp $CFFE
- bcc BranchNo48
- jmp GotoNo48
-BranchNo48
  lda $C012
 
  sec
@@ -1480,7 +1430,7 @@ BranchNo48
 
  sta $C012
 
-GotoNo48
+GotoNo46
 
  lda $C014
  sta $CFFE
@@ -1488,27 +1438,27 @@ GotoNo48
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo49
- jmp GotoNo49
-BranchNo49
+ beq BranchNo47
+ jmp GotoNo47
+BranchNo47
  lda $C012
  sta $CFFE
  lda #0
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo50
- jmp GotoNo50
-BranchNo50
+ beq BranchNo48
+ jmp GotoNo48
+BranchNo48
  lda $C00E
  sta $CFFE
  lda #10
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo51
- jmp GotoNo51
-BranchNo51
+ bcc BranchNo49
+ jmp GotoNo49
+BranchNo49
  lda $C00E
 
  clc
@@ -1518,7 +1468,7 @@ BranchNo51
 
  sta $C00E
 
-GotoNo51
+GotoNo49
 
  lda $C00F
  sta $CFFE
@@ -1526,9 +1476,9 @@ GotoNo51
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo52
- jmp GotoNo52
-BranchNo52
+ bcc BranchNo50
+ jmp GotoNo50
+BranchNo50
  lda $C00F
 
  sec
@@ -1538,12 +1488,12 @@ BranchNo52
 
  sta $C00F
 
-GotoNo52
+GotoNo50
 
  lda $C013
  sta $C012
 
-GotoNo50
+GotoNo48
 
  lda $D001
 
@@ -1581,7 +1531,87 @@ GotoNo50
 
  sta $D000
 
-GotoNo49
+GotoNo47
+
+ lda #193
+ sta $7F9
+
+ lda #195
+ sta $7FA
+
+ lda #%00001000
+ bit $DC01
+ beq BranchNo51
+ jmp GotoNo51
+BranchNo51
+ lda #194
+ sta $7F9
+
+ lda #0
+ sta $CFFE
+ lda $C017
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ beq BranchNo52
+ jmp GotoNo52
+BranchNo52
+ lda #30
+ sta $C015
+
+ lda #1
+ sta $C017
+
+GotoNo52
+
+ jmp SKIPRIGHT
+
+GotoNo51
+
+ lda #0
+ sta $C017
+
+ lda #0
+ sta $C015
+
+SKIPRIGHT
+
+ lda #%00000100
+ bit $DC01
+ beq BranchNo53
+ jmp GotoNo53
+BranchNo53
+ lda #196
+ sta $7FA
+
+ lda #0
+ sta $CFFE
+ lda $C016
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ beq BranchNo54
+ jmp GotoNo54
+BranchNo54
+ lda #30
+ sta $C00C
+
+ lda #1
+ sta $C016
+
+GotoNo54
+
+ jmp SKIPLEFT
+
+GotoNo53
+
+ lda #0
+ sta $C00C
+
+ lda #0
+ sta $C016
+
+SKIPLEFT
 
  lda $C014
  sta $CFFE
@@ -1589,9 +1619,9 @@ GotoNo49
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo53
- jmp GotoNo53
-BranchNo53
+ beq BranchNo55
+ jmp GotoNo55
+BranchNo55
  lda $D001
 
  clc
@@ -1610,11 +1640,31 @@ BranchNo53
 
  sta $D000
 
+ lda #1
+ sta $C010
+
+ lda $C00C
+ sta $CFFE
+ lda #0
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ beq BranchNo56
+ jmp GotoNo56
+BranchNo56
+ lda #0
+ sta $C010
+
+GotoNo56
+
+ lda #0
+ sta $C011
+
  lda #%00000100
  bit $DC01
- beq BranchNo54
- jmp GotoNo54
-BranchNo54
+ beq BranchNo57
+ jmp GotoNo57
+BranchNo57
  lda $D001
 
  sec
@@ -1624,15 +1674,9 @@ BranchNo54
 
  sta $D001
 
-GotoNo54
+GotoNo57
 
- lda #1
- sta $C010
-
- lda #0
- sta $C011
-
-GotoNo53
+GotoNo55
 
  lda $C014
  sta $CFFE
@@ -1640,9 +1684,9 @@ GotoNo53
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo55
- jmp GotoNo55
-BranchNo55
+ beq BranchNo58
+ jmp GotoNo58
+BranchNo58
  lda $D001
 
  clc
@@ -1661,11 +1705,31 @@ BranchNo55
 
  sta $D000
 
+ lda #1
+ sta $C011
+
+ lda $C015
+ sta $CFFE
+ lda #0
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ beq BranchNo59
+ jmp GotoNo59
+BranchNo59
+ lda #0
+ sta $C011
+
+GotoNo59
+
+ lda #0
+ sta $C010
+
  lda #%00001000
  bit $DC01
- beq BranchNo56
- jmp GotoNo56
-BranchNo56
+ beq BranchNo60
+ jmp GotoNo60
+BranchNo60
  lda $D001
 
  sec
@@ -1675,15 +1739,9 @@ BranchNo56
 
  sta $D001
 
-GotoNo56
+GotoNo60
 
- lda #1
- sta $C011
-
- lda #0
- sta $C010
-
-GotoNo55
+GotoNo58
 
  lda $D000
  sta $CFFE
@@ -1691,16 +1749,16 @@ GotoNo55
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo57
- jmp GotoNo57
-BranchNo57
+ bcc BranchNo61
+ jmp GotoNo61
+BranchNo61
  lda $C010
  sta $C011
 
  lda #0
  sta $C010
 
-GotoNo57
+GotoNo61
 
  lda $D000
  sta $CFFE
@@ -1708,16 +1766,16 @@ GotoNo57
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo58
- jmp GotoNo58
-BranchNo58
+ bcc BranchNo62
+ jmp GotoNo62
+BranchNo62
  lda $C011
  sta $C010
 
  lda #0
  sta $C011
 
-GotoNo58
+GotoNo62
 
  lda $D001
  sta $CFFE
@@ -1725,13 +1783,13 @@ GotoNo58
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo59
- jmp GotoNo59
-BranchNo59
+ bcc BranchNo63
+ jmp GotoNo63
+BranchNo63
  lda #0
  sta $C00F
 
-GotoNo59
+GotoNo63
 
  lda #0
  sta $C014
@@ -1748,9 +1806,9 @@ GotoNo59
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo60
- jmp GotoNo60
-BranchNo60
+ bcc BranchNo64
+ jmp GotoNo64
+BranchNo64
  lda $D000
  sta $CFFE
  lda $D004
@@ -1763,9 +1821,9 @@ BranchNo60
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo61
- jmp GotoNo61
-BranchNo61
+ bcc BranchNo65
+ jmp GotoNo65
+BranchNo65
  lda $D001
  sta $CFFE
  lda $D005
@@ -1778,9 +1836,9 @@ BranchNo61
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo62
- jmp GotoNo62
-BranchNo62
+ bcc BranchNo66
+ jmp GotoNo66
+BranchNo66
  lda $D001
  sta $CFFE
  lda $D005
@@ -1793,14 +1851,11 @@ BranchNo62
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo63
- jmp GotoNo63
-BranchNo63
+ bcc BranchNo67
+ jmp GotoNo67
+BranchNo67
  lda #0
  sta $C00E
-
- lda #1
- sta $C014
 
  lda $C00C
  sta $CFFE
@@ -1808,9 +1863,26 @@ BranchNo63
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo64
- jmp GotoNo64
-BranchNo64
+ bcc BranchNo68
+ jmp GotoNo68
+BranchNo68
+ lda $C014
+ sta $CFFE
+ lda #0
+ sta $CFFD
+ lda $CFFD
+ cmp $CFFE
+ bcc BranchNo69
+ jmp GotoNo69
+BranchNo69
+ lda #1
+ sta $C010
+
+ lda #0
+ sta $C011
+
+GotoNo69
+
  lda #0
  sta $C014
 
@@ -1826,15 +1898,22 @@ BranchNo64
 
  sta $D001
 
+ jmp SKIPROLL1
+
+GotoNo68
+
+ lda #1
+ sta $C014
+
+SKIPROLL1
+
+GotoNo67
+
+GotoNo66
+
+GotoNo65
+
 GotoNo64
-
-GotoNo63
-
-GotoNo62
-
-GotoNo61
-
-GotoNo60
 
  lda $D000
  sta $CFFE
@@ -1848,9 +1927,9 @@ GotoNo60
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo65
- jmp GotoNo65
-BranchNo65
+ bcc BranchNo70
+ jmp GotoNo70
+BranchNo70
  lda $D000
  sta $CFFE
  lda $D002
@@ -1863,9 +1942,9 @@ BranchNo65
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo66
- jmp GotoNo66
-BranchNo66
+ bcc BranchNo71
+ jmp GotoNo71
+BranchNo71
  lda $D001
  sta $CFFE
  lda $D003
@@ -1878,9 +1957,9 @@ BranchNo66
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo67
- jmp GotoNo67
-BranchNo67
+ bcc BranchNo72
+ jmp GotoNo72
+BranchNo72
  lda $D001
  sta $CFFE
  lda $D003
@@ -1893,14 +1972,11 @@ BranchNo67
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo68
- jmp GotoNo68
-BranchNo68
+ bcc BranchNo73
+ jmp GotoNo73
+BranchNo73
  lda #0
  sta $C00E
-
- lda #2
- sta $C014
 
  lda $C015
  sta $CFFE
@@ -1908,9 +1984,26 @@ BranchNo68
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo69
- jmp GotoNo69
-BranchNo69
+ bcc BranchNo74
+ jmp GotoNo74
+BranchNo74
+ lda $C014
+ sta $CFFE
+ lda #0
+ sta $CFFD
+ lda $CFFD
+ cmp $CFFE
+ bcc BranchNo75
+ jmp GotoNo75
+BranchNo75
+ lda #1
+ sta $C011
+
+ lda #0
+ sta $C010
+
+GotoNo75
+
  lda #0
  sta $C014
 
@@ -1926,236 +2019,20 @@ BranchNo69
 
  sta $D001
 
-GotoNo69
-
-GotoNo68
-
-GotoNo67
-
-GotoNo66
-
-GotoNo65
-
- lda #20
- sta $03F2
- lda #5
- sta $03F3
- lda #5
- sta $03F0
- lda #15
- sta $03F1
-
- lda #0
- sta $0340
- lda $D000
- sta $033C
- lda $D001
- sta $033E
- lda $D006
- sta $033D
- lda $D007
- sta $033F
- jsr FullCollision
- ldx $03F0
- ldy $03F2
- sty $03F0
- stx $03F2
- ldx $03F1
- ldy $03F3
- sty $03F1
- stx $03F3
- lda $D006
- sta $033C
- lda $D007
- sta $033E
- lda $D000
- sta $033D
- lda $D001
- sta $033F
- jsr FullCollision
- lda $0340
- cmp #1
- beq BranchNo70
- jmp GotoNo70
-BranchNo70
- ldx #25
-PointLoopNo70
- jsr AddPoint
- dex
- cpx #0
- bne PointLoopNo70
-
- lda $C01B
- sta $CFFE
- lda #1
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- beq BranchNo72
- jmp GotoNo72
-BranchNo72
- ldx #75
-PointLoopNo72
- jsr AddPoint
- dex
- cpx #0
- bne PointLoopNo72
-
- lda $C01B
-
- clc
- adc #1
-
- sta $CFFF
-
- sta $C01B
-
- lda $C01B
- sta $CFFE
- lda #3
- sta $CFFD
- lda $CFFD
- cmp $CFFE
- bcc BranchNo74
- jmp GotoNo74
-BranchNo74
- lda #1
- sta $C01B
+ jmp SKIPROLL2
 
 GotoNo74
 
+ lda #2
+ sta $C014
+
+SKIPROLL2
+
+GotoNo73
+
 GotoNo72
 
- lda #3
- sta $C01A
-
- lda #%01000001
- sta $D40B
-
-
- lda $D001
- sta $CFFE
- lda $D007
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- bcc BranchNo75
- jmp GotoNo75
-BranchNo75
- lda #0
- sta $C00E
-
- lda $D41B
- sta $CFFE
- lda #5
- and $CFFE
-
- clc
- adc #1
-
- sta $CFFF
-
- sta $C00F
-
-GotoNo75
-
- lda $D001
- sta $CFFE
- lda $D007
- sta $CFFD
- lda $CFFD
- cmp $CFFE
- bcc BranchNo76
- jmp GotoNo76
-BranchNo76
- lda #2
- sta $C00E
-
- lda #0
- sta $C00F
-
-GotoNo76
-
- lda $D000
-
- clc
- adc #10
-
- sta $CFFF
-
- sta $CFFE
- lda $D006
- sta $CFFD
- lda $CFFD
- cmp $CFFE
- bcc BranchNo77
- jmp GotoNo77
-BranchNo77
- lda #0
- sta $C011
-
- lda $D41B
- sta $CFFE
- lda #3
- and $CFFE
-
- sta $C010
-
-GotoNo77
-
- lda $D000
-
- clc
- adc #10
-
- sta $CFFF
-
- sta $CFFE
- lda $D006
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- beq BranchNo78
- jmp GotoNo78
-BranchNo78
- lda #0
- sta $C011
-
- lda $D41B
- sta $CFFE
- lda #3
- and $CFFE
-
- sta $C010
-
-GotoNo78
-
- lda $D000
-
- clc
- adc #10
-
- sta $CFFF
-
- sta $CFFE
- lda $D006
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- bcc BranchNo79
- jmp GotoNo79
-BranchNo79
- lda $D41B
- sta $CFFE
- lda #3
- and $CFFE
-
- sta $C011
-
- lda #0
- sta $C010
-
-GotoNo79
+GotoNo71
 
 GotoNo70
 
@@ -2174,6 +2051,229 @@ GotoNo70
  sta $033C
  lda $D001
  sta $033E
+ lda $D006
+ sta $033D
+ lda $D007
+ sta $033F
+ jsr FullCollision
+ ldx $03F0
+ ldy $03F2
+ sty $03F0
+ stx $03F2
+ ldx $03F1
+ ldy $03F3
+ sty $03F1
+ stx $03F3
+ lda $D006
+ sta $033C
+ lda $D007
+ sta $033E
+ lda $D000
+ sta $033D
+ lda $D001
+ sta $033F
+ jsr FullCollision
+ lda $0340
+ cmp #1
+ beq BranchNo76
+ jmp GotoNo76
+BranchNo76
+ ldx #25
+PointLoopNo76
+ jsr AddPoint
+ dex
+ cpx #0
+ bne PointLoopNo76
+
+ lda $C019
+ sta $CFFE
+ lda #1
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ beq BranchNo78
+ jmp GotoNo78
+BranchNo78
+ ldx #75
+PointLoopNo78
+ jsr AddPoint
+ dex
+ cpx #0
+ bne PointLoopNo78
+
+ lda $C019
+
+ clc
+ adc #1
+
+ sta $CFFF
+
+ sta $C019
+
+ lda $C019
+ sta $CFFE
+ lda #3
+ sta $CFFD
+ lda $CFFD
+ cmp $CFFE
+ bcc BranchNo80
+ jmp GotoNo80
+BranchNo80
+ lda #1
+ sta $C019
+
+GotoNo80
+
+GotoNo78
+
+ lda #3
+ sta $C018
+
+ lda #%01000001
+ sta $D40B
+
+
+ lda $D001
+ sta $CFFE
+ lda $D007
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ bcc BranchNo81
+ jmp GotoNo81
+BranchNo81
+ lda #0
+ sta $C00E
+
+ lda $D41B
+ sta $CFFE
+ lda #5
+ and $CFFE
+
+ clc
+ adc #1
+
+ sta $CFFF
+
+ sta $C00F
+
+GotoNo81
+
+ lda $D001
+ sta $CFFE
+ lda $D007
+ sta $CFFD
+ lda $CFFD
+ cmp $CFFE
+ bcc BranchNo82
+ jmp GotoNo82
+BranchNo82
+ lda #2
+ sta $C00E
+
+ lda #0
+ sta $C00F
+
+GotoNo82
+
+ lda $D000
+
+ clc
+ adc #10
+
+ sta $CFFF
+
+ sta $CFFE
+ lda $D006
+ sta $CFFD
+ lda $CFFD
+ cmp $CFFE
+ bcc BranchNo83
+ jmp GotoNo83
+BranchNo83
+ lda #0
+ sta $C011
+
+ lda $D41B
+ sta $CFFE
+ lda #3
+ and $CFFE
+
+ sta $C010
+
+GotoNo83
+
+ lda $D000
+
+ clc
+ adc #10
+
+ sta $CFFF
+
+ sta $CFFE
+ lda $D006
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ beq BranchNo84
+ jmp GotoNo84
+BranchNo84
+ lda #0
+ sta $C011
+
+ lda $D41B
+ sta $CFFE
+ lda #3
+ and $CFFE
+
+ sta $C010
+
+GotoNo84
+
+ lda $D000
+
+ clc
+ adc #10
+
+ sta $CFFF
+
+ sta $CFFE
+ lda $D006
+ sta $CFFD
+ lda $CFFE
+ cmp $CFFD
+ bcc BranchNo85
+ jmp GotoNo85
+BranchNo85
+ lda $D41B
+ sta $CFFE
+ lda #3
+ and $CFFE
+
+ sta $C011
+
+ lda #0
+ sta $C010
+
+GotoNo85
+
+GotoNo76
+
+ lda #20
+ sta $03F2
+ lda #5
+ sta $03F3
+ lda #5
+ sta $03F0
+ lda #15
+ sta $03F1
+
+ lda #0
+ sta $0340
+ lda $D000
+ sta $033C
+ lda $D001
+ sta $033E
  lda $D008
  sta $033D
  lda $D009
@@ -2198,59 +2298,59 @@ GotoNo70
  jsr FullCollision
  lda $0340
  cmp #1
- beq BranchNo80
- jmp GotoNo80
-BranchNo80
+ beq BranchNo86
+ jmp GotoNo86
+BranchNo86
  ldx #25
-PointLoopNo80
+PointLoopNo86
  jsr AddPoint
  dex
  cpx #0
- bne PointLoopNo80
+ bne PointLoopNo86
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #2
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo82
- jmp GotoNo82
-BranchNo82
+ beq BranchNo88
+ jmp GotoNo88
+BranchNo88
  ldx #75
-PointLoopNo82
+PointLoopNo88
  jsr AddPoint
  dex
  cpx #0
- bne PointLoopNo82
+ bne PointLoopNo88
 
- lda $C01B
+ lda $C019
 
  clc
  adc #1
 
  sta $CFFF
 
- sta $C01B
+ sta $C019
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #3
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo84
- jmp GotoNo84
-BranchNo84
+ bcc BranchNo90
+ jmp GotoNo90
+BranchNo90
  lda #1
- sta $C01B
+ sta $C019
 
-GotoNo84
+GotoNo90
 
-GotoNo82
+GotoNo88
 
  lda #3
- sta $C01A
+ sta $C018
 
  lda #%01000001
  sta $D40B
@@ -2262,9 +2362,9 @@ GotoNo82
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo85
- jmp GotoNo85
-BranchNo85
+ bcc BranchNo91
+ jmp GotoNo91
+BranchNo91
  lda #0
  sta $C00E
 
@@ -2280,7 +2380,7 @@ BranchNo85
 
  sta $C00F
 
-GotoNo85
+GotoNo91
 
  lda $D001
  sta $CFFE
@@ -2288,16 +2388,16 @@ GotoNo85
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo86
- jmp GotoNo86
-BranchNo86
+ bcc BranchNo92
+ jmp GotoNo92
+BranchNo92
  lda #2
  sta $C00E
 
  lda #0
  sta $C00F
 
-GotoNo86
+GotoNo92
 
  lda $D000
  sta $CFFE
@@ -2305,9 +2405,9 @@ GotoNo86
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo87
- jmp GotoNo87
-BranchNo87
+ bcc BranchNo93
+ jmp GotoNo93
+BranchNo93
  lda #0
  sta $C011
 
@@ -2318,7 +2418,7 @@ BranchNo87
 
  sta $C010
 
-GotoNo87
+GotoNo93
 
  lda $D000
  sta $CFFE
@@ -2326,9 +2426,9 @@ GotoNo87
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo88
- jmp GotoNo88
-BranchNo88
+ beq BranchNo94
+ jmp GotoNo94
+BranchNo94
  lda #0
  sta $C011
 
@@ -2339,7 +2439,7 @@ BranchNo88
 
  sta $C010
 
-GotoNo88
+GotoNo94
 
  lda $D000
 
@@ -2353,9 +2453,9 @@ GotoNo88
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo89
- jmp GotoNo89
-BranchNo89
+ bcc BranchNo95
+ jmp GotoNo95
+BranchNo95
  lda $D41B
  sta $CFFE
  lda #3
@@ -2366,9 +2466,9 @@ BranchNo89
  lda #0
  sta $C010
 
-GotoNo89
+GotoNo95
 
-GotoNo80
+GotoNo86
 
  lda #20
  sta $03F2
@@ -2409,59 +2509,59 @@ GotoNo80
  jsr FullCollision
  lda $0340
  cmp #1
- beq BranchNo90
- jmp GotoNo90
-BranchNo90
+ beq BranchNo96
+ jmp GotoNo96
+BranchNo96
  ldx #25
-PointLoopNo90
+PointLoopNo96
  jsr AddPoint
  dex
  cpx #0
- bne PointLoopNo90
+ bne PointLoopNo96
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #3
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo92
- jmp GotoNo92
-BranchNo92
+ beq BranchNo98
+ jmp GotoNo98
+BranchNo98
  ldx #75
-PointLoopNo92
+PointLoopNo98
  jsr AddPoint
  dex
  cpx #0
- bne PointLoopNo92
+ bne PointLoopNo98
 
- lda $C01B
+ lda $C019
 
  clc
  adc #1
 
  sta $CFFF
 
- sta $C01B
+ sta $C019
 
- lda $C01B
+ lda $C019
  sta $CFFE
  lda #3
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo94
- jmp GotoNo94
-BranchNo94
+ bcc BranchNo100
+ jmp GotoNo100
+BranchNo100
  lda #1
- sta $C01B
+ sta $C019
 
-GotoNo94
+GotoNo100
 
-GotoNo92
+GotoNo98
 
  lda #3
- sta $C01A
+ sta $C018
 
  lda #%01000001
  sta $D40B
@@ -2473,9 +2573,9 @@ GotoNo92
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo95
- jmp GotoNo95
-BranchNo95
+ bcc BranchNo101
+ jmp GotoNo101
+BranchNo101
  lda #0
  sta $C00E
 
@@ -2491,7 +2591,7 @@ BranchNo95
 
  sta $C00F
 
-GotoNo95
+GotoNo101
 
  lda $D001
  sta $CFFE
@@ -2499,16 +2599,16 @@ GotoNo95
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo96
- jmp GotoNo96
-BranchNo96
+ bcc BranchNo102
+ jmp GotoNo102
+BranchNo102
  lda #2
  sta $C00E
 
  lda #0
  sta $C00F
 
-GotoNo96
+GotoNo102
 
  lda $D000
  sta $CFFE
@@ -2516,9 +2616,9 @@ GotoNo96
  sta $CFFD
  lda $CFFD
  cmp $CFFE
- bcc BranchNo97
- jmp GotoNo97
-BranchNo97
+ bcc BranchNo103
+ jmp GotoNo103
+BranchNo103
  lda #0
  sta $C011
 
@@ -2529,7 +2629,7 @@ BranchNo97
 
  sta $C010
 
-GotoNo97
+GotoNo103
 
  lda $D000
  sta $CFFE
@@ -2537,9 +2637,9 @@ GotoNo97
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- beq BranchNo98
- jmp GotoNo98
-BranchNo98
+ beq BranchNo104
+ jmp GotoNo104
+BranchNo104
  lda #0
  sta $C011
 
@@ -2550,7 +2650,7 @@ BranchNo98
 
  sta $C010
 
-GotoNo98
+GotoNo104
 
  lda $D000
 
@@ -2564,9 +2664,9 @@ GotoNo98
  sta $CFFD
  lda $CFFE
  cmp $CFFD
- bcc BranchNo99
- jmp GotoNo99
-BranchNo99
+ bcc BranchNo105
+ jmp GotoNo105
+BranchNo105
  lda $D41B
  sta $CFFE
  lda #3
@@ -2577,111 +2677,9 @@ BranchNo99
  lda #0
  sta $C010
 
-GotoNo99
-
-GotoNo90
-
- lda #193
- sta $7F9
-
- lda #195
- sta $7FA
-
- lda #%00001000
- bit $DC01
- beq BranchNo100
- jmp GotoNo100
-BranchNo100
- lda #194
- sta $7F9
-
- lda #0
- sta $CFFE
- lda $C017
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- beq BranchNo101
- jmp GotoNo101
-BranchNo101
- lda #0
- sta $CFFE
- lda $C019
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- beq BranchNo102
- jmp GotoNo102
-BranchNo102
- lda #30
- sta $C015
-
- lda #1
- sta $C017
-
-GotoNo102
-
-GotoNo101
-
- jmp SKIPRIGHT
-
-GotoNo100
-
- lda #0
- sta $C017
-
- lda #0
- sta $C015
-
-SKIPRIGHT
-
- lda #%00000100
- bit $DC01
- beq BranchNo103
- jmp GotoNo103
-BranchNo103
- lda #196
- sta $7FA
-
- lda #0
- sta $CFFE
- lda $C016
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- beq BranchNo104
- jmp GotoNo104
-BranchNo104
- lda #0
- sta $CFFE
- lda $C018
- sta $CFFD
- lda $CFFE
- cmp $CFFD
- beq BranchNo105
- jmp GotoNo105
-BranchNo105
- lda #30
- sta $C00C
-
- lda #1
- sta $C016
-
 GotoNo105
 
-GotoNo104
-
- jmp SKIPLEFT
-
-GotoNo103
-
- lda #0
- sta $C00C
-
- lda #0
- sta $C016
-
-SKIPLEFT
+GotoNo96
 
  jsr DisplayScore
  jsr DisplayScore2
@@ -2699,7 +2697,7 @@ GAMEOVER
 
  lda #10
 
- sta $C01C
+ sta $C01A
 ; THIS IS BOOMTIME
 
  lda #%10000001
@@ -2759,7 +2757,7 @@ LoopNo108
  jsr Wait1
 
 
- lda $C01C
+ lda $C01A
  sta $CFFE
  lda #0
  sta $CFFD
@@ -2768,18 +2766,18 @@ LoopNo108
  bcc BranchNo109
  jmp GotoNo109
 BranchNo109
- lda $C01C
+ lda $C01A
 
  sec
  sbc #1
 
  sta $CFFF
 
- sta $C01C
+ sta $C01A
 
 GotoNo109
 
- lda $C01C
+ lda $C01A
  sta $CFFE
  lda #0
  sta $CFFD
@@ -2799,7 +2797,7 @@ GotoNo110
  beq BranchNo111
  jmp GotoNo111
 BranchNo111
- lda $C01C
+ lda $C01A
  sta $CFFE
  lda #0
  sta $CFFD
@@ -2839,8 +2837,6 @@ GotoNo113
 ;$C018 IS NOW FREE
 ;$C019 IS NOW FREE
 ;$C01A IS NOW FREE
-;$C01B IS NOW FREE
-;$C01C IS NOW FREE
 
 GotoNo112
 
@@ -2861,3 +2857,4 @@ Wait3
  lda $d011
  bpl Wait2
  rts
+
