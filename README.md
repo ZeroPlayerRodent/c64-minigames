@@ -5,6 +5,8 @@ Minigames for the Commodore 64!
 
 ![Knights Attack Gameplay](https://github.com/ZeroPlayerRodent/c64-minigames/blob/main/img/knight.gif)
 
+![Snowman Slider Gameplay](https://github.com/ZeroPlayerRodent/c64-minigames/blob/main/img/snow.gif)
+
 ![Bombers Dodge Gameplay](https://github.com/ZeroPlayerRodent/c64-minigames/blob/main/img/bombers.gif)
 
 ## About
